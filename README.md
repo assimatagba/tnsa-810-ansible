@@ -12,29 +12,9 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 ## 2- Modifier le ficher playbook.yml
 
 ###  Ajouter les adresses ip des machines
+  hosts: address_ip_machine
   
-  - - hosts: address_ip_front_i
-
-    become: true
-    
-    roles:
-    
-      - frontend
-
-  - hosts: address_ip_back
-      become: true
-      roles:
-        - backend
+  Voir les configs dans le fichier playbook.yml
  
 ## Si plusieurs machines front ajouter un autre hosts avec l'addresse ip correspondant
-### Exemple : 
-  - hosts: address_ip_front_1
-    become: true
-    roles:
-      - frontend
-      - 
-  - hosts: address_ip_front_2
-    become: true
-    roles:
-      - frontend
-  ...
+### Voir l'exemple dans le fichier playbook.yml
