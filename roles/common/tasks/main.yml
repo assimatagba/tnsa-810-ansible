@@ -1,0 +1,17 @@
+- name: "Installation des dépendance communes"
+  yum:
+    pkg:
+      - git
+      - vim
+      - curl
+      - unzip
+    state: present
+
+- name: "Ajouter le repo nodejs"
+  shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash - warn=false
+
+- name: "Installer yarn"
+  shell: npm install yarn
+
+    #- name: "Installer nodejs"
+    #shell: yum install nodejs

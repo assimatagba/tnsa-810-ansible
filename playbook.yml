@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  roles:
+    - common
+
+- hosts: 10.101.53.202
+  become: true
+  roles:
+    - frontend
+
+- hosts: 10.101.53.201
+  become: true
+  roles:
+    - backend

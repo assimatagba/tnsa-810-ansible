@@ -1,0 +1,57 @@
+#- name: "Check update"
+  #  shell: yum check-update warn=false
+
+- name: "Installer les dependances necessaire"
+  shell: yum install -y yum-utils device-mapper-persistent-data lvm2 warn=false
+
+- name: "Ajouter le repository docker"
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo warn=false
+
+- name: "Installer docker"
+  shell: yum install docker --skip-broken warn=false
+
+- name: "CLoner le dossier backend_student sur la machine"
+  shell: git clone https://github.com/assimatagba/tnsa-810-backend.git
+
+- name: "Remplacer le mot de passe mysq_root dans docker-compose.yml"
+  lineinfile:
+    path: tnsa-810-backend/docker-compose.yml
+    regexp: '^      MYSQL_ROOT_PASSWORD'
+    line: '      MYSQL_ROOT_PASSWORD: root'
+
+- name: "Remplacer le user mysql_user dans docker-compose.yml"
+  lineinfile:
+    path: tnsa-810-backend/docker-compose.yml
+    regexp: '^      MYSQL_USER'
+    line: '      MYSQL_USER: admin'
+
+- name: "Remplacer le mot de passe user mysql_password"
+  lineinfile:
+    path: tnsa-810-backend/docker-compose.yml
+    regexp: '^      MYSQL_PASSWORD'
+    line: '      MYSQL_PASSWORD: admin'
+
+- name: "Remplacer username dans ormconfig.js"
+  lineinfile:
+    path: tnsa-810-backend/ormconfig.js
+    regexp: '^   username'
+    line: '   username: "admin"'
+
+- name: "Remplacer le mot de passe dans ormconfig.js"
+  lineinfile:
+    path: tnsa-810-backend/ormconfig.js
+    regexp: '^   password'
+    line: '   password: "admin"'
+
+- name: "Installer les services mysql et leurs dependances"
+  yum:
+    pkg:
+      - mariadb-server
+    state: present
+  #  shell: yum install mariadb-server warn=false
+
+- name: "Lancer le service mysql"
+  shell: systemctl start mariadb 
+
+- name: "Changer le mot de passe root mysql"
+  shell: mysqladmin --user=root --password=root password "admin"  

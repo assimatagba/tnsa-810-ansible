@@ -1,0 +1,9 @@
+#- name: "Ajouter le repo nodejs"
+#shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash - warn=false
+
+    #- name: "Installation de nodejs"
+    #shell: yum install nodejs
+
+- name: "Cloner le dossier frontend_student sur la machine"
+  shell: git clone https://github.com/assimatagba/tnsa-810-frontend.git
+
