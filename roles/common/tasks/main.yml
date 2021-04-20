@@ -13,5 +13,11 @@
 - name: "Installer yarn"
   shell: npm install -g yarn
 
+- name: "Ajouter le repo docker"
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo warn=false
+
+- name: "Installer docker"
+  shell: yum install docker --skip-broken warn=false
+
     #- name: "Installer nodejs"
     #shell: yum install nodejs
