@@ -5,5 +5,42 @@
     #shell: yum install nodejs
 
 - name: "Cloner le dossier frontend_student sur la machine"
+  become: false
   shell: git clone https://github.com/assimatagba/tnsa-810-frontend.git
 
+- name: "Creer un fichier .env pour les variables d'environnement"
+  shell: cd tnsa-810-frontend && touch .env
+
+- name: "Ajouter la variable d'environnement REACT_APP_API_URL ==> address_ip_du_backend"
+  lineinfile:
+    path: tnsa-810-frontend/.env
+    line: 'REACT_APP_API_URL = 10.101.53.201:3000'
+
+- name: "Modifier le fichier Dockerfile du frontend - 1"
+  lineinfile:
+    path: tnsa-810-frontend/Dockerfile
+    regexp: '^COPY --from=builder /app/build'
+    line: '#COPY --from=builder /app/build'
+
+- name: "Modifier le fichier Dockerfile du frontend - 2"
+  lineinfile:
+    path: tnsa-810-frontend/Dockerfile
+    firstmatch: no
+    regexp: '^WORKDIR /app'
+    line: 'RUN npm i -g serve'
+
+- name: "Modifier le fichier Dockerfile du frontend - 3"
+  lineinfile:
+    path: tnsa-810-frontend/Dockerfile
+    regexp: '^CMD ["serve", "-p", "80", "-s", "."]'
+    line: 'CMD ["serve", "-p", "80", "-s", "build"]'
+
+- name: "Installer les dépendances du projet"
+  shell: cd tnsa-810-frontend && yarn install
+
+- name: "Build le frontend sur docker"
+  shell: cd tnsa-810-frontend && docker-compose build
+
+- name: "Lancer le frontend sur docker ==> accessible sur address_ip_front:8080"
+  become: yes
+  shell: cd tnsa-810-frontend && docker-compose up -d

@@ -11,7 +11,7 @@
   shell: curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash - warn=false
 
 - name: "Installer yarn"
-  shell: npm install yarn
+  shell: npm install -g yarn
 
     #- name: "Installer nodejs"
     #shell: yum install nodejs
