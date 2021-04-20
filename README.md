@@ -5,10 +5,12 @@
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
 ## 1- Modifier le ficher hosts
-  Ajouter les adresses ip des machines
-  ==> address_ip ansible_user=machine_user
+###  Ajouter les adresses ip des machines
+  
+  --> address_ip ansible_user=machine_user
   
 ## 2- Modifier le ficher playbook.yml
-  Ajouter les adresses ip des machines
+
+###  Ajouter les adresses ip des machines
   
-  ==> hosts: address_ip
+  --> hosts: address_ip
