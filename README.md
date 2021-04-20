@@ -1,3 +1,4 @@
 # tnsa-810-ansible
 
-## Modifier le fichier hosts
+## 1- Modifier le fichier hosts
+- Ajouter les adresses ip des machines 
