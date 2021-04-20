@@ -13,10 +13,10 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 
 ###  Ajouter les adresses ip des machines
   
-  - hosts: address_ip_front_i
+  "- hosts: address_ip_front_i
     become: true
     roles:
-      - frontend
+      - frontend"
 
   - hosts: address_ip_back
       become: true
