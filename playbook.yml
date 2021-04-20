@@ -12,3 +12,14 @@
   become: true
   roles:
     - backend
+
+# Exemples:
+# - hosts: address_ip_front_1
+#   become: true
+#   roles:
+#     - frontend
+#
+# - hosts: address_ip_front_2
+#   become: true
+#   roles:
+#     - frontend
