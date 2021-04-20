@@ -18,3 +18,9 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
  
 ## Si plusieurs machines front ajouter un autre hosts avec l'addresse ip correspondant
 ### Voir l'exemple dans le fichier playbook.yml
+
+
+## 3- Lancer ansible
+  - Tester le ping 
+  
+  ansible -m ping all
