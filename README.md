@@ -22,16 +22,23 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 ## 3- Generer une ssh-key
 
   $ ssh-keygen
+  
   $ ssh-copy-id machine_user@address_ip_1
+  
   $ ssh-copy-id machine_user@address_ip_2
+  
   ... Si plusieurs machines
   
   ### Pour eviter de saisir le passphrase ssh a chaque fois
+  
   $ exec ssh-agent bash
+  
   $ ssh-add
+  
   Enter passphrase for ~/.ssh/id_rsa: ton_passphrase
   
 ## 4- Lancer ansible
+
   - Tester le ping 
   
  $ ansible -m ping all
