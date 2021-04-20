@@ -44,18 +44,31 @@ https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.ht
 Reponse ping: 
 
 10.101.53.202 | SUCCESS => {
+
     "ansible_facts": {
+    
         "discovered_interpreter_python": "/usr/bin/python"
+        
     },
+    
     "changed": false,
+    
     "ping": "pong"
+    
 }
+
 10.101.53.201 | SUCCESS => {
+
     "ansible_facts": {
+    
         "discovered_interpreter_python": "/usr/bin/python"
+        
     },
+    
     "changed": false,
+    
     "ping": "pong"
+    
 }
   
  $ ansible -m ping all
